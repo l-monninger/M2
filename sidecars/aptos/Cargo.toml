@@ -12,7 +12,6 @@ authors = ["Liam Monninger <liam@movementlabs.xyz>"]
 homepage = "https://www.movementlabs.xyz"
 publish = false
 repository = "https://github.com/movemntdev/m2"
-rust-version = "1.70"
 
 [workspace.dependencies]
 # self
@@ -46,6 +45,8 @@ chrono = { version = "0.4.19", features = ["clock", "serde"] }
 clap = { version = "4.4.10", features = ["derive", "env", "suggestions"] }
 const-str = "0.5"
 tracing = { version = "0.1.27", features = ["span_event"] }
+derivative = "2.2.0"
+rand = { version = "0.7" }
 
 # aptos
 aptos-config = { path = "../../vendors/aptos-core/config" }
@@ -53,7 +54,7 @@ aptos-consensus-types = { path = "../../vendors/aptos-core/consensus/consensus-t
 aptos-mempool = { path = "../../vendors/aptos-core/mempool" }
 aptos-runtimes = { path = "../../vendors/aptos-core/crates/aptos-runtimes" }
 aptos-crypto = { path = "../../vendors/aptos-core/crates/aptos-crypto" }
-aptos-db = { path = "../../vendors/aptos-core/storage/aptosdb" }
+aptos-db = { path = "../../vendors/aptos-core/storage/aptosdb", features = ["fuzzing"] } # features fuzzing needs to stay in here for testdb purposes
 aptos-executor = { path = "../../vendors/aptos-core/execution/executor" }
 aptos-logger = { path = "../../vendors/aptos-core/crates/aptos-logger" }
 aptos-api-types = { path = "../../vendors/aptos-core/api/types" }
@@ -66,3 +67,9 @@ aptos-temppath = { path = "../../vendors/aptos-core/crates/aptos-temppath" }
 aptos-types = { path = "../../vendors/aptos-core/types" }
 aptos-vm = { path = "../../vendors/aptos-core/aptos-move/aptos-vm" }
 aptos-vm-genesis = { path = "../../vendors/aptos-core/aptos-move/vm-genesis" }
+aptos-state-view = { path = "../../vendors/aptos-core/storage/state-view" }
+
+[patch.crates-io]
+serde-reflection = { git = "https://github.com/aptos-labs/serde-reflection", rev = "839aed62a20ddccf043c08961cfe74875741ccba" }
+merlin = { git = "https://github.com/aptos-labs/merlin" }
+x25519-dalek = { git = "https://github.com/aptos-labs/x25519-dalek", branch = "zeroize_v1" }

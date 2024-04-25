@@ -7,6 +7,13 @@ edition = "2021"
 async-trait = { workspace = true }
 anyhow = { workspace = true }
 dirs = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+derivative = { workspace = true }
+futures = { workspace = true }
+rand = { workspace = true }
+tempfile = { workspace = true }
+chrono = { workspace = true }
 
 # aptos
 aptos-config = { workspace = true }
@@ -27,3 +34,4 @@ aptos-temppath = { workspace = true }
 aptos-types = { workspace = true }
 aptos-vm = { workspace = true }
 aptos-vm-genesis = { workspace = true }
+aptos-state-view = { workspace = true }
